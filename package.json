@@ -1,0 +1,13 @@
+{
+  "name": "ml-portfolio",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "@guillaumebriday/vue-scroll-progress-bar": "^1.0.0",
+    "gridsome": "^0.7.0"
+  }
+}
