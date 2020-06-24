@@ -14,7 +14,6 @@
           <li>Vollzeit Beschäftigung</li>
           <li>Entwicklung & UI/UX-Design von Websites und (iOS- & Android-)Apps</li>
           <li>Beratung öffentlicher Kunden über UX/UI Design & techn. Umsetzung</li>
-
         </ul>
       </div>
     </b-col>
@@ -32,5 +31,13 @@ export default {
     border-left: 2px solid #000;
     margin-left: 15px;
     padding-left: 44px;
+  }
+  /* .dark-mode h2, */
+  .dark-mode h3,
+  .dark-mode li {
+    color: #b7c9e4;
+  }
+  .dark-mode h4 {
+    color: #fde24f;
   }
 </style>

@@ -65,6 +65,9 @@ export default {
   color: #00214d;
   text-align: center;
 }
+.logo:hover {
+  text-decoration: none;
+}
 .logo-name {
   font-family: 'quenda-medium';
   line-height: 0.6em;

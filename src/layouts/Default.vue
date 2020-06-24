@@ -2,7 +2,7 @@
   <div class="layout">
     <header class="header">
       <strong>
-        <button>
+        <button v-on:click="switchDarkMode()">
           Dark Mode
         </button>
       </strong>
@@ -13,9 +13,18 @@
 
 <script>
 export default {
+  data: {
+    darkmode: false
+  },
   methods: {
-    darkMode() {
-
+    switchDarkMode() {
+      this.darkmode = !this.darkmode
+      if (!this.darkmode) {
+        document.body.classList.add("dark-mode")
+      }
+      else {
+        document.body.classList.remove("dark-mode")
+      }
     }
   }
 }
@@ -36,6 +45,14 @@ body {
   padding:0;
   line-height: 1.5;
   background-color: #fffffe;
+}
+.dark-mode {
+  background-color: #001534;
+} 
+
+.dark-mode,
+.dark-mode .logo  {
+  color: #fffffe;
 }
 
 
