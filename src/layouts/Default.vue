@@ -2,9 +2,9 @@
   <div class="layout">
     <header class="header">
       <strong>
-        <!-- <button>
+        <button>
           Dark Mode
-        </button> -->
+        </button>
       </strong>
     </header>
     <slot/>

@@ -11,6 +11,21 @@
     </div>
   </g-link>
 
+  <b-container fluid>
+    <!-- Berufserfahrung -->
+    <SectionHeading title="Berufserfahrung" icon="briefcase"/>
+    <SectionContent/>
+
+    <!-- Ausbildung -->
+    <SectionHeading title="Ausbildung" icon="book"/>
+
+    <!-- Programmierkenntnisse -->
+    <SectionHeading title="Programmierkenntnisse" icon="code-slash"/>
+
+    <!-- Hobbies -->
+    <SectionHeading title="Hobbies & andere Leidenschaften" icon="controller"/>
+
+  </b-container>
   </Layout>
 </template>
 
@@ -24,8 +39,14 @@ query {
 </static-query>
 
 <script>
+import SectionHeading from '~/components/Section-Heading.vue'
+import SectionContent from '~/components/Section-Content.vue'
 
 export default {
+  components: {
+    SectionHeading,
+    SectionContent
+  },
   metaInfo: {
     title: 'Hello, world!'
   }
@@ -34,7 +55,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap');
 
 .home-links a {
   margin-right: 1rem;
@@ -48,12 +69,18 @@ export default {
   font-family: 'quenda-medium';
   line-height: 0.6em;
   font-size: 72px;
-
 }
 .logo-tagline {
   font-family: 'Lato', sans-serif;
+  font-weight: 100;
   text-transform: uppercase;
   font-size: 35px;
   letter-spacing: 6px;
+}
+h1 {
+  font-family: 'Lato', sans-serif;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 200;
 }
 </style>

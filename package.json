@@ -8,6 +8,8 @@
   },
   "dependencies": {
     "@guillaumebriday/vue-scroll-progress-bar": "^1.0.0",
+    "bootstrap": "^4.5.0",
+    "bootstrap-vue": "^2.15.0",
     "gridsome": "^0.7.0"
   }
 }
