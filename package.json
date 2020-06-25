@@ -7,9 +7,13 @@
     "explore": "gridsome explore"
   },
   "dependencies": {
+    "@gridsome/source-airtable": "^0.2.0",
     "@guillaumebriday/vue-scroll-progress-bar": "^1.0.0",
+    "babel-runtime": "^6.26.0",
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
-    "gridsome": "^0.7.0"
+    "gridsome": "^0.7.0",
+    "moment": "^2.27.0",
+    "vue-markdown": "^2.2.4"
   }
 }

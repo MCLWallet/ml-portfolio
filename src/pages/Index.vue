@@ -14,10 +14,28 @@
   <b-container fluid>
     <!-- Berufserfahrung -->
     <SectionHeading title="Berufserfahrung" icon="briefcase"/>
-    <SectionContent/>
+
+    <SectionContent v-for="job in $static.jobs.edges" 
+                    :key="job.node.id"
+                    :title="job.node.titel"
+                    :firm="job.node.firma"
+                    :location="job.node.ort"
+                    :details="job.node.details"
+                    :anfang="job.node.anfang"
+                    :ende="job.node.ende"/>
+
+    
 
     <!-- Ausbildung -->
     <SectionHeading title="Ausbildung" icon="book"/>
+    <SectionContent v-for="education in $static.education.edges" 
+                    :key="education.node.id"
+                    :title="education.node.titel"
+                    :firm="education.node.firma"
+                    :location="education.node.ort"
+                    :details="education.node.details"
+                    :anfang="education.node.anfang"
+                    :ende="education.node.ende"/>
 
     <!-- Programmierkenntnisse -->
     <SectionHeading title="Programmierkenntnisse" icon="code-slash"/>
@@ -34,7 +52,43 @@
 query {
   metadata {
     siteName
+  },
+  jobs: allFirma(
+    sortBy: "ende"
+    order: DESC
+    filter: { art: { eq: "Beruf" } }
+  ) {
+    edges {
+      node {
+        id
+        titel
+        firma
+        ort
+        anfang
+        ende
+        details
+      }
+    }
+  },
+  education: allFirma(
+    sortBy: "ende"
+    order: DESC
+    filter: { art: { eq: "Ausbildung" } }
+  ) {
+    edges {
+      node {
+        id
+        titel
+        firma
+        ort
+        anfang
+        ende
+        details
+        art
+      }
+    }
   }
+
 }
 </static-query>
 

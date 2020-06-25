@@ -13,18 +13,20 @@
 
 <script>
 export default {
-  data: {
-    darkmode: false
+  data() {
+    return {
+      darkmode: false
+    }
   },
   methods: {
     switchDarkMode() {
-      this.darkmode = !this.darkmode
       if (!this.darkmode) {
         document.body.classList.add("dark-mode")
       }
       else {
         document.body.classList.remove("dark-mode")
       }
+      this.darkmode = !this.darkmode
     }
   }
 }

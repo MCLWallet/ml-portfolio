@@ -5,6 +5,21 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Marcell Lanczos',
-  plugins: []
+  siteName: "Marcell Lanczos",
+  plugins: [{
+    use: '@gridsome/source-airtable',
+    options: {
+      apiKey: process.env.AIRTABLE_KEY, // required
+      base: process.env.AIRTABLE_BASE, // required
+      tables: [{
+          name: 'Timeline', // required
+          typeName: 'Firma', // required
+        },
+      ],
+      tableName: 'Timeline', // required
+    },
+  }, ],
+  templates: {
+    Firma: '/firma/:id', // optional
+  },
 }
