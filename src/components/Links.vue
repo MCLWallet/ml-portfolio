@@ -1,5 +1,6 @@
 <template>
   <div class="links">
+    <!-- TODO: Solve global darkmode problem -->
     <!-- GitHub Link -->
     <a  href="https://github.com/MCLWallet" 
         title="GitHub" 
