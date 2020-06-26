@@ -2,19 +2,20 @@
 // The Client API can be used here. Learn more: gridsome.org/docs/client-api
 
 import DefaultLayout from '~/layouts/Default.vue'
-import {
-  BootstrapVue,
-  BootstrapVueIcons
-} from 'bootstrap-vue'
+import { BootstrapVue,BootstrapVueIcons } from 'bootstrap-vue'
+import VAnimateCss from 'v-animate-css'
 
 import '~/assets/quenda-medium.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '~/assets/fonts.scss'
+import '~/assets/animations.scss'
+
 export default function (Vue, { router, head, isClient }) {
   // Set default layout as a global component
   Vue.component('Layout', DefaultLayout)
   Vue.use(BootstrapVue)
   Vue.use(BootstrapVueIcons)
+  Vue.use(VAnimateCss);
 
 }

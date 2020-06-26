@@ -1,5 +1,5 @@
 <template>
-  <b-row align-v="center">
+  <b-row align-v="center section-content" :style="animationDelay">
     <b-col cols="12">
       <b-icon icon="dot" style="width: 32px; height: 32px;"></b-icon>
       <h2>
@@ -35,7 +35,8 @@ export default {
     location: String, 
     details: String,
     anfang: String,
-    ende: String
+    ende: String,
+    delay: Number
   },
   computed: {
     convertedAnfang() {
@@ -46,6 +47,9 @@ export default {
       let newEnde = moment(this.ende, "YYYY-MM-DD").format("MMMM YYYY")
       return newEnde
     },
+    animationDelay() {
+      return 'animation-delay: ' + this.delay + 's;'
+    }
   },
   beforeCreate() {
     moment.locale('de')
@@ -59,6 +63,13 @@ export default {
     border-left: 2px solid #000;
     margin-left: 15px;
     padding-left: 2.1em;
+    transition: .2s ease-in;
+  }
+  .section-content {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
   }
   /* .dark-mode h2, */
   .dark-mode h3,

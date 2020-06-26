@@ -1,22 +1,17 @@
 <template>
   <Layout>
 
-    
-  <div class="logo">
-    <div class="logo-name">
-      {{ $static.metadata.siteName }}
-    </div>
-    <div class="logo-tagline">
-      Full-Stack Developer
-    </div>
-  </div>
+    <Logo/>
+    <Links :darkmode="darkmode"/>
+  
 
   <b-container class="my-5">
     <!-- Berufserfahrung -->
     <div class="mb-4">
       <SectionHeading title="Berufserfahrung" icon="briefcase"/>
-      <SectionContent v-for="job in $static.jobs.edges" 
+      <SectionContent v-for="(job, index) in $static.jobs.edges" 
                       :key="job.node.id"
+                      :delay="index"
                       :title="job.node.titel"
                       :firm="job.node.firma"
                       :location="job.node.ort"
@@ -52,12 +47,9 @@
 
 <static-query>
 query {
-  metadata {
-    siteName
-  },
   jobs: allFirma(
     sortBy: "ende"
-    order: DESC
+    order: ASC
     filter: { art: { eq: "Beruf" } }
   ) {
     edges {
@@ -97,43 +89,32 @@ query {
 <script>
 import SectionHeading from '~/components/Section-Heading.vue'
 import SectionContent from '~/components/Section-Content.vue'
+import Logo from '~/components/Logo.vue'
+import Links from '~/components/Links.vue'
 
 export default {
   components: {
     SectionHeading,
-    SectionContent
+    SectionContent,
+    Logo,
+    Links
   },
   metaInfo: {
-    title: 'Hello, world!'
+    title: 'CV'
+  },
+  props: {
+    darkmode: Boolean
   }
-  
 }
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;400&display=swap');
-
-.home-links a {
-  margin-right: 1rem;
+.links {
+  display: flex;
+  justify-content: center;
 }
-.logo {
-  text-decoration: none;
-  color: #00214d;
-  text-align: center;
-}
-.logo:hover {
-  text-decoration: none;
-}
-.logo-name {
-  font-family: 'quenda-medium';
-  line-height: 0.6em;
-  font-size: 72px;
-}
-.logo-tagline {
-  font-family: 'Lato', sans-serif;
-  font-weight: 100;
-  text-transform: uppercase;
-  font-size: 35px;
-  letter-spacing: 6px;
+.linkedin-icon {
+  width: 32px;
+  height: 32px;
 }
 </style>
