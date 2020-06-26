@@ -1,36 +1,11 @@
 <template>
   <div class="layout">
-    <header class="header">
-      <strong>
-        <button v-on:click="switchDarkMode()">
-          Dark Mode
-        </button>
-      </strong>
-    </header>
+    <Header/>
     <slot/>
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      darkmode: false
-    }
-  },
-  methods: {
-    switchDarkMode() {
-      if (!this.darkmode) {
-        document.body.classList.add("dark-mode")
-      }
-      else {
-        document.body.classList.remove("dark-mode")
-      }
-      this.darkmode = !this.darkmode
-    }
-  }
-}
-</script>
+
 
 <static-query>
 query {
@@ -40,6 +15,16 @@ query {
 }
 </static-query>
 
+<script>
+import Header from '~/components/Header.vue'
+
+export default {
+  components: {
+    Header
+  }
+}
+</script>
+
 <style>
 body {
   font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
@@ -47,33 +32,23 @@ body {
   padding:0;
   line-height: 1.5;
   background-color: #fffffe;
+  transition: .3s ease-in;
 }
 .dark-mode {
   background-color: #001534;
 } 
 
 .dark-mode,
-.dark-mode .logo  {
+.dark-mode .logo,
+.dark-mode .dark-mode-button svg g path  {
   color: #fffffe;
 }
 
 
 .layout {
-  max-width: 760px;
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
-}
-
-.nav__link {
-  margin-left: 20px;
-}
 </style>

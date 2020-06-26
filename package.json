@@ -15,5 +15,8 @@
     "gridsome": "^0.7.0",
     "moment": "^2.27.0",
     "vue-markdown": "^2.2.4"
+  },
+  "devDependencies": {
+    "vue-svg-loader": "^0.16.0"
   }
 }

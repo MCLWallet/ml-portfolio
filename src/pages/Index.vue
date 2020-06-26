@@ -11,7 +11,7 @@
     </div>
   </g-link>
 
-  <b-container fluid>
+  <b-container>
     <!-- Berufserfahrung -->
     <SectionHeading title="Berufserfahrung" icon="briefcase"/>
 
