@@ -1,9 +1,7 @@
 <template>
-  <b-row>
-    <b-col cols="1">
+  <b-row align-v="center">
+    <b-col cols="12">
       <b-icon icon="dot" style="width: 32px; height: 32px;"></b-icon>
-    </b-col>
-    <b-col cols="11">
       <h2>
         {{ anfang ? convertedAnfang + ' - ' + convertedEnde : convertedEnde }}
         </h2>
@@ -13,7 +11,7 @@
         <h3> {{ title }} </h3>
         <h4> {{ firm + ', ' + location }} </h4>
         
-        <vue-markdown v-if="details">
+        <vue-markdown v-if="details" class="details">
           {{details}}
         </vue-markdown>
       </div>
@@ -60,14 +58,17 @@ export default {
   .line {
     border-left: 2px solid #000;
     margin-left: 15px;
-    padding-left: 44px;
+    padding-left: 2.1em;
   }
   /* .dark-mode h2, */
   .dark-mode h3,
   .dark-mode li {
-    color: #b7c9e4;
+    color: #fffffe;
   }
   .dark-mode h4 {
-    color: #fde24f;
+    color: #fffffe;
+  }
+  .dark-mode .line {
+    border-color: #fffffe;
   }
 </style>

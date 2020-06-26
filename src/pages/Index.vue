@@ -2,40 +2,42 @@
   <Layout>
 
     
-  <g-link class="logo" to="/">
+  <div class="logo">
     <div class="logo-name">
       {{ $static.metadata.siteName }}
     </div>
     <div class="logo-tagline">
       Full-Stack Developer
     </div>
-  </g-link>
+  </div>
 
-  <b-container>
+  <b-container class="my-5">
     <!-- Berufserfahrung -->
-    <SectionHeading title="Berufserfahrung" icon="briefcase"/>
-
-    <SectionContent v-for="job in $static.jobs.edges" 
-                    :key="job.node.id"
-                    :title="job.node.titel"
-                    :firm="job.node.firma"
-                    :location="job.node.ort"
-                    :details="job.node.details"
-                    :anfang="job.node.anfang"
-                    :ende="job.node.ende"/>
-
+    <div class="mb-4">
+      <SectionHeading title="Berufserfahrung" icon="briefcase"/>
+      <SectionContent v-for="job in $static.jobs.edges" 
+                      :key="job.node.id"
+                      :title="job.node.titel"
+                      :firm="job.node.firma"
+                      :location="job.node.ort"
+                      :details="job.node.details"
+                      :anfang="job.node.anfang"
+                      :ende="job.node.ende"/>
+    </div>
     
-
     <!-- Ausbildung -->
-    <SectionHeading title="Ausbildung" icon="book"/>
-    <SectionContent v-for="education in $static.education.edges" 
-                    :key="education.node.id"
-                    :title="education.node.titel"
-                    :firm="education.node.firma"
-                    :location="education.node.ort"
-                    :details="education.node.details"
-                    :anfang="education.node.anfang"
-                    :ende="education.node.ende"/>
+    <div class="mb-4">
+      <SectionHeading title="Ausbildung" icon="book"/>
+      <SectionContent v-for="education in $static.education.edges" 
+                      :key="education.node.id"
+                      :title="education.node.titel"
+                      :firm="education.node.firma"
+                      :location="education.node.ort"
+                      :details="education.node.details"
+                      :anfang="education.node.anfang"
+                      :ende="education.node.ende"/>
+    </div>
+    
 
     <!-- Programmierkenntnisse -->
     <SectionHeading title="Programmierkenntnisse" icon="code-slash"/>
@@ -133,11 +135,5 @@ export default {
   text-transform: uppercase;
   font-size: 35px;
   letter-spacing: 6px;
-}
-h1 {
-  font-family: 'Lato', sans-serif;
-  text-transform: uppercase;
-  font-size: 24px;
-  font-weight: 200;
 }
 </style>
