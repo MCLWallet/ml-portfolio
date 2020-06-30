@@ -1,25 +1,25 @@
 <template>
-  <div class="links">
-    <!-- TODO: Solve global darkmode problem -->
+  <div class="links mt-2">
+    <!-- Mail Link -->
+    <a  href="mailto:marcell@studio-seis.at" 
+        title="E-Mail" 
+        class="mx-2">
+          <b-icon icon="envelope" style="width: 32px; height: 32px;" class="mail-icon"/>
+    </a>
     <!-- GitHub Link -->
     <a  href="https://github.com/MCLWallet" 
         title="GitHub" 
         target="_blank"
-        @mouseover="gitHubHovered = true"
-        @mouseout="gitHubHovered = false">
-
-      <g-image v-if="!darkmode" src="~/assets/GitHub-dark.png"></g-image>
-      <g-image v-else src="~/assets/GitHub-light.png"></g-image>
-      <span v-show="gitHubHovered">GitHub</span>
-    
+        class="mx-2">
+          <GitHubIcon class="github-icon"/>
     </a>
     <!-- CodePen Link -->
-    <a href="https://codepen.io/marcell_lanczos" title="CodePen" target="_blank">
-      <g-image v-if="!darkmode" src="~/assets/codepen-dark.png" width="32"></g-image>
-      <g-image v-else src="~/assets/codepen-light.png" width="32"></g-image>
+    <a href="https://codepen.io/marcell_lanczos" title="CodePen" target="_blank" class="mx-2">
+      <CodePenIcon class="codepen-icon" height="32" width="32"/>
+
     </a>
     <!-- LinkedIn Link -->
-    <a href="https://www.linkedin.com/in/marcell-lanczos-32b2191a5/" title="LinkedIn" target="_blank">
+    <a href="https://www.linkedin.com/in/marcell-lanczos-32b2191a5/" title="LinkedIn" target="_blank" class="mx-2">
       <LinkedInIcon class="linkedin-icon"/>
     </a>
   </div>
@@ -28,10 +28,14 @@
 
 <script>
 import LinkedInIcon from '~/assets/Linkedin_icon.svg'
+import GitHubIcon from '~/assets/GitHub-dark.svg'
+import CodePenIcon from '~/assets/codepen.svg'
 
 export default {
   components : {
-    LinkedInIcon
+    LinkedInIcon,
+    GitHubIcon,
+    CodePenIcon
   },
   data() {
     return {
@@ -61,7 +65,15 @@ export default {
 </script>
 
 <style>
-  .dark-mode .linkedin-icon {
+  .links a {
+    color: initial;
+  }
+  .dark-mode .mail-icon,
+  .dark-mode .linkedin-icon,
+  .dark-mode .codepen-icon {
+    fill:#fff;
+  }
+  .dark-mode .github-icon path {
     fill:#fff;
   }
 </style>

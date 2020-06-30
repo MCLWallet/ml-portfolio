@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <div class="logo-name">
+    <div class="logo-name mb-1">
       {{ $static.metadata.siteName }}
     </div>
     <div class="logo-tagline">

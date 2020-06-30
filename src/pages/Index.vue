@@ -1,6 +1,9 @@
 <template>
   <Layout>
-
+    <!-- TODO: Mobile Version -->
+    <!-- TODO: Text Content -->
+    <!-- TODO: Print Version -->
+    <!-- TODO: Animations -->
     <Logo/>
     <Links :darkmode="darkmode"/>
   
@@ -36,9 +39,11 @@
 
     <!-- Programmierkenntnisse -->
     <SectionHeading title="Programmierkenntnisse" icon="code-slash"/>
+    <SkillsContent :array="$static.skills.edges"/>
 
     <!-- Hobbies -->
     <SectionHeading title="Hobbies & andere Leidenschaften" icon="controller"/>
+    <SkillsContent :array="$static.hobbies.edges"/>
 
   </b-container>
   </Layout>
@@ -81,6 +86,22 @@ query {
         art
       }
     }
+  },
+  skills: allSkill(filter: {art: {ne: "Sonstiges"}}) {
+    edges {
+      node {
+        id
+        skill
+      }
+    }
+  },
+  hobbies: allSkill(filter: {art: {eq: "Sonstiges"}}) {
+    edges {
+      node {
+        id
+        skill
+      }
+    }
   }
 
 }
@@ -89,6 +110,7 @@ query {
 <script>
 import SectionHeading from '~/components/Section-Heading.vue'
 import SectionContent from '~/components/Section-Content.vue'
+import SkillsContent from '~/components/Skills-Content.vue'
 import Logo from '~/components/Logo.vue'
 import Links from '~/components/Links.vue'
 
@@ -96,6 +118,7 @@ export default {
   components: {
     SectionHeading,
     SectionContent,
+    SkillsContent,
     Logo,
     Links
   },
