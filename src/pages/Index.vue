@@ -2,10 +2,19 @@
   <Layout>
     <!-- TODO: Mobile Version -->
     <!-- TODO: Text Content -->
-    <!-- TODO: Print Version -->
     <!-- TODO: Animations -->
-    <Logo/>
-    <Links :darkmode="darkmode"/>
+    <!-- TODO: Time Sorting Bug -->
+    <b-container>
+      <b-row>
+        <b-col cols="12">
+
+        <Logo/>
+        <Links :darkmode="darkmode"/>
+        </b-col>
+
+      </b-row>
+
+    </b-container>
   
 
   <b-container class="my-5">
@@ -80,6 +89,7 @@ query {
         anfang
         ende
         details
+        order
       }
     }
   },
@@ -95,6 +105,7 @@ query {
         firma
         ende
         details
+        order
       }
     }
   },
@@ -113,6 +124,7 @@ query {
         ende
         details
         art
+        order
       }
     }
   },
@@ -156,6 +168,28 @@ export default {
   },
   props: {
     darkmode: Boolean
+  },
+  computed: {
+    sortedArray() {
+      return sort($static.jobs.edges)
+    }
+  },
+  methods: {
+    compare(a, b) {
+      const orderA = a.node.order
+      const orderB = b.node.order
+
+      let comparison = 0;
+      if (orderA > orderB) {
+        comparison = 1;
+      } else if (orderA < orderB) {
+        comparison = -1;
+      }
+      return comparison;
+    },
+    sort(arr) {
+      return arr.sort(compare)
+    }
   }
 }
 </script>

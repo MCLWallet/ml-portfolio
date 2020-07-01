@@ -6,7 +6,7 @@
       </button>
     </div>
     <div class="header-child right-side">
-      <button class="dark-mode-button" v-on:click="print()"  title="Dark Mode">
+      <button class="dark-mode-button" v-on:click="print()"  title="Drucken">
         <PrintIcon class="print-icon" style="width: 40px; height: 40px;"/>
       </button>
     </div>
@@ -58,11 +58,21 @@ export default {
   .dark-mode-button {
     background-color: transparent;
     border: none;
+    transition: 0.8s;
+    transition-timing-function: ease-out;
+  }
+  .dark-mode-button:hover {
+    transform: scale(1.3);
   }
   .dark-mode-button:focus {
     outline: none;
   }
   .dark-mode .print-icon path {
     fill: #fffffe;
+  }
+  @media print {
+    .dark-mode-button svg {
+      opacity: 0;
+    }
   }
 </style>

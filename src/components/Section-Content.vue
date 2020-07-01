@@ -77,7 +77,8 @@ export default {
 
 <style>
   .line {
-    border-left: 2px solid #000;
+    border-left: 2px solid;
+    border-color: #001534;
     margin-left: 15px;
     padding-left: 2.1em;
     transition: .2s ease-in;
@@ -89,7 +90,7 @@ export default {
     animation-fill-mode: forwards;
   }
   .section-content a{
-    color: #ff5470;
+    text-decoration: underline;
   } 
   .dark-mode .section-content a{
     color: #fde24f;
@@ -104,5 +105,22 @@ export default {
   }
   .dark-mode .line {
     border-color: #fffffe;
+  }
+  .dark-mode .section-content a:hover{
+    color: #e9cd36;
+  } 
+  @media print {
+    .section-content a,
+    .dark-mode .section-content a{
+      color: #007bff;
+    } 
+    /* .dark-mode h2, */
+    .dark-mode h3,
+    .dark-mode h4,
+    .dark-mode li,
+    .dark-mode .line {
+      color: #001534 !important;
+      border-color: #001534 !important;
+    }
   }
 </style>
