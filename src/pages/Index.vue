@@ -1,6 +1,5 @@
 <template>
   <Layout>
-    <!-- TODO: Mobile Version -->
     <!-- TODO: Text Content -->
     <!-- TODO: Animations -->
     <!-- TODO: Time Sorting Bug -->
@@ -8,8 +7,8 @@
       <b-row>
         <b-col cols="12">
 
-        <Logo/>
-        <Links :darkmode="darkmode"/>
+          <Logo/>
+          <Links :darkmode="darkmode"/>
         </b-col>
 
       </b-row>

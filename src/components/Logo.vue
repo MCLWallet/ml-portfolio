@@ -44,4 +44,12 @@ export default {
     font-size: 35px;
     letter-spacing: 6px;
   }
+  @media screen and (max-width: 767px) {
+    .logo-name {
+      line-height: 0.8em;
+    }
+    .logo-tagline {
+      line-height: 1.2em;
+    }
+  }
 </style>
