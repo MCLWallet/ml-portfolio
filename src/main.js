@@ -3,7 +3,6 @@
 
 import DefaultLayout from '~/layouts/Default.vue'
 import { BootstrapVue,BootstrapVueIcons } from 'bootstrap-vue'
-import VAnimateCss from 'v-animate-css'
 
 import '~/assets/quenda-medium.css'
 import 'bootstrap/dist/css/bootstrap.css'
@@ -16,6 +15,4 @@ export default function (Vue, { router, head, isClient }) {
   Vue.component('Layout', DefaultLayout)
   Vue.use(BootstrapVue)
   Vue.use(BootstrapVueIcons)
-  Vue.use(VAnimateCss);
-
 }
