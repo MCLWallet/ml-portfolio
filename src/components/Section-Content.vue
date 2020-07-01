@@ -20,7 +20,7 @@
           {{ firm }} 
         </h4>
         
-        <vue-markdown v-if="details" class="details">
+        <vue-markdown v-if="details" class="details" :anchorAttributes="{target: '_blank'}">
           {{details}}
         </vue-markdown>
       </div>

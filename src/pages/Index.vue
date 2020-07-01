@@ -1,8 +1,6 @@
 <template>
   <Layout>
     <!-- TODO: Text Content -->
-    <!-- TODO: Animations -->
-    <!-- TODO: Time Sorting Bug -->
     <b-container>
       <b-row>
         <b-col cols="12">
@@ -20,9 +18,9 @@
     <!-- Projekterfahrung -->
     <div class="mb-4">
       <SectionHeading title="Projekterfahrung" icon="folder-check"/>
-      <SectionContent v-for="(project, index) in $static.projects.edges" 
+      <SectionContent v-for="project in $static.projects.edges" 
                       :key="project.node.id"
-                      :delay="index"
+                      :delay="0"
                       :title="project.node.titel"
                       :firm="project.node.firma"
                       :location="project.node.ort"
@@ -34,9 +32,9 @@
     <!-- Berufserfahrung -->
     <div class="mb-4">
       <SectionHeading title="Berufserfahrung" icon="briefcase"/>
-      <SectionContent v-for="(job, index) in $static.jobs.edges" 
+      <SectionContent v-for="job in $static.jobs.edges" 
                       :key="job.node.id"
-                      :delay="index"
+                      :delay="0"
                       :title="job.node.titel"
                       :firm="job.node.firma"
                       :location="job.node.ort"
@@ -76,7 +74,7 @@
 query {
   jobs: allFirma(
     sortBy: "ende"
-    order: ASC
+    order: DESC
     filter: { art: { eq: "Beruf" } }
   ) {
     edges {
