@@ -66,5 +66,15 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 }
+@media print {
+  .dark-mode {
+    background-color: #fffffe;
+  } 
+  .dark-mode,
+  .dark-mode .logo,
+  .dark-mode .dark-mode-button svg g path  {
+    color: #001534;
+  }
+}
 
 </style>

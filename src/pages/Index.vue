@@ -9,6 +9,20 @@
   
 
   <b-container class="my-5">
+    <!-- Projekterfahrung -->
+    <div class="mb-4">
+      <SectionHeading title="Projekterfahrung" icon="folder-check"/>
+      <SectionContent v-for="(project, index) in $static.projects.edges" 
+                      :key="project.node.id"
+                      :delay="index"
+                      :title="project.node.titel"
+                      :firm="project.node.firma"
+                      :location="project.node.ort"
+                      :details="project.node.details"
+                      :anfang="project.node.anfang"
+                      :ende="project.node.ende"
+                      isProject/>
+    </div>
     <!-- Berufserfahrung -->
     <div class="mb-4">
       <SectionHeading title="Berufserfahrung" icon="briefcase"/>
@@ -64,6 +78,21 @@ query {
         firma
         ort
         anfang
+        ende
+        details
+      }
+    }
+  },
+  projects: allFirma(
+    sortBy: "ende"
+    order: DESC
+    filter: { art: { eq: "Projekt" } }
+  ) {
+    edges {
+      node {
+        id
+        titel
+        firma
         ende
         details
       }

@@ -5,11 +5,21 @@
         <b-icon :icon="darkmode ? 'brightness-high' : 'moon'" style="width: 32px; height: 32px;"></b-icon>
       </button>
     </div>
+    <div class="header-child right-side">
+      <button class="dark-mode-button" v-on:click="print()"  title="Dark Mode">
+        <PrintIcon class="print-icon" style="width: 40px; height: 40px;"/>
+      </button>
+    </div>
   </header>
 </template>
 
 <script>
+import PrintIcon from '~/assets/print.svg'
+
 export default {
+  components: {
+    PrintIcon
+  },
   data() {
     return {
       darkmode: false,
@@ -20,6 +30,9 @@ export default {
     switchDarkMode() {
       this.darkmode = !this.darkmode
       this.$emit('switchDarkMode', this.darkmode)
+    },
+    print() {
+      window.print()
     }
   },
 }
@@ -48,5 +61,8 @@ export default {
   }
   .dark-mode-button:focus {
     outline: none;
+  }
+  .dark-mode .print-icon path {
+    fill: #fffffe;
   }
 </style>

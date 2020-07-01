@@ -2,14 +2,23 @@
   <b-row align-v="center section-content" :style="animationDelay">
     <b-col cols="12">
       <b-icon icon="dot" style="width: 32px; height: 32px;"></b-icon>
-      <h2>
+      <h2 v-if="!isProject">
         {{ anfang ? convertedAnfang + ' - ' + convertedEnde : convertedEnde }}
-        </h2>
+      </h2>
+      <h2 v-else>
+        {{ convertedYear }}
+      </h2>
     </b-col>
     <b-col cols="12">
       <div class="line">
         <h3> {{ title }} </h3>
-        <h4> {{ firm + ', ' + location }} </h4>
+        <h4 v-if="!isProject"> 
+          {{ firm + ', ' + location }} 
+        </h4>
+        <h4 v-else> 
+          <strong>Kunde: </strong>
+          {{ firm }} 
+        </h4>
         
         <vue-markdown v-if="details" class="details">
           {{details}}
@@ -36,7 +45,11 @@ export default {
     details: String,
     anfang: String,
     ende: String,
-    delay: Number
+    delay: Number,
+    isProject: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     convertedAnfang() {
@@ -46,6 +59,10 @@ export default {
     convertedEnde() {
       let newEnde = moment(this.ende, "YYYY-MM-DD").format("MMMM YYYY")
       return newEnde
+    },
+    convertedYear() {
+      let newYear = moment(this.ende, "YYYY-MM-DD").format("YYYY")
+      return newYear
     },
     animationDelay() {
       return 'animation-delay: ' + this.delay + 's;'
@@ -71,6 +88,12 @@ export default {
     animation-duration: 1s;
     animation-fill-mode: forwards;
   }
+  .section-content a{
+    color: #ff5470;
+  } 
+  .dark-mode .section-content a{
+    color: #fde24f;
+  } 
   /* .dark-mode h2, */
   .dark-mode h3,
   .dark-mode li {
