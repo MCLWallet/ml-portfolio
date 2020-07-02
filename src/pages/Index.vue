@@ -17,8 +17,8 @@
   <b-container class="my-5">
     <!-- Projekterfahrung -->
     <div class="mb-4">
-      <SectionHeading title="Projekterfahrung" icon="folder-check"/>
-      <SectionContent v-for="project in $static.projects.edges" 
+      <SectionHeading title="Projekterfahrung" icon="folder"/>
+      <SectionContent v-for="project in sortArr($static.projects.edges)" 
                       :key="project.node.id"
                       :delay="0"
                       :title="project.node.titel"
@@ -31,8 +31,8 @@
     </div>
     <!-- Berufserfahrung -->
     <div class="mb-4">
-      <SectionHeading title="Berufserfahrung" icon="briefcase"/>
-      <SectionContent v-for="job in $static.jobs.edges" 
+      <SectionHeading title="Unternehmen & Kollektive" icon="gear-fill"/>
+      <SectionContent v-for="job in sortArr($static.jobs.edges)" 
                       :key="job.node.id"
                       :delay="0"
                       :title="job.node.titel"
@@ -100,6 +100,7 @@ query {
         id
         titel
         firma
+        anfang
         ende
         details
         order
@@ -166,26 +167,9 @@ export default {
   props: {
     darkmode: Boolean
   },
-  computed: {
-    sortedArray() {
-      return sort($static.jobs.edges)
-    }
-  },
   methods: {
-    compare(a, b) {
-      const orderA = a.node.order
-      const orderB = b.node.order
-
-      let comparison = 0;
-      if (orderA > orderB) {
-        comparison = 1;
-      } else if (orderA < orderB) {
-        comparison = -1;
-      }
-      return comparison;
-    },
-    sort(arr) {
-      return arr.sort(compare)
+    sortArr(arr) {
+      return arr.slice().sort((a, b) => (a.node.order < b.node.order) ? 1 : -1)
     }
   }
 }

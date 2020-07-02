@@ -3,10 +3,10 @@
     <b-col cols="12">
       <b-icon icon="dot" style="width: 32px; height: 32px;"></b-icon>
       <h2 v-if="!isProject">
-        {{ anfang ? convertedAnfang + ' - ' + convertedEnde : convertedEnde }}
+        {{ anfang ? convertedAnfang + ' - ' + (ende ? convertedEnde : 'Heute') : convertedEnde }}
       </h2>
       <h2 v-else>
-        {{ convertedYear }}
+        {{ anfang ? convertedAnfangYear + ' - ' + convertedEndeYear : convertedEndeYear }}
       </h2>
     </b-col>
     <b-col cols="12">
@@ -60,7 +60,11 @@ export default {
       let newEnde = moment(this.ende, "YYYY-MM-DD").format("MMMM YYYY")
       return newEnde
     },
-    convertedYear() {
+    convertedAnfangYear() {
+      let newYear = moment(this.anfang, "YYYY-MM-DD").format("YYYY")
+      return newYear
+    },
+    convertedEndeYear() {
       let newYear = moment(this.ende, "YYYY-MM-DD").format("YYYY")
       return newYear
     },
