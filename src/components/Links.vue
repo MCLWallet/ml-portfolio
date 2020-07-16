@@ -1,11 +1,11 @@
 <template>
   <div class="links mt-2">
     <!-- Mail Link -->
-    <a  href="mailto:marcell@studio-seis.at" 
+    <a  href="mailto:office@marcell-lanczos.com" 
         title="E-Mail" 
         class="mx-2">
           <b-icon icon="envelope" style="width: 32px; height: 32px;" class="mail-icon"/>
-          <span>marcell@studio-seis.at</span>
+          <span>office@marcell-lanczos.com</span>
     </a>
     <!-- GitHub Link -->
     <a  href="https://github.com/MCLWallet" 
