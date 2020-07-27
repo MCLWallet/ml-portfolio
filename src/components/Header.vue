@@ -1,14 +1,30 @@
 <template>
   <header class="header">
     <div class="header-child left-side">
+      <!-- Dark Mode Button -->
       <button class="dark-mode-button" v-on:click="switchDarkMode()"  title="Dark Mode">
         <b-icon :icon="darkmode ? 'brightness-high' : 'moon'" style="width: 32px; height: 32px;"></b-icon>
       </button>
     </div>
     <div class="header-child right-side">
+      <!-- Print Button -->
       <button class="dark-mode-button" v-on:click="print()"  title="Drucken">
         <PrintIcon class="print-icon" style="width: 40px; height: 40px;"/>
       </button>
+      <!-- Language Switch -->
+      <!-- TODO: Style Language Switch -->
+      <b-button-group>
+        <b-button 
+          v-on:click="handleLanguageSwitch('Deutsch')"
+          :class="currentLanguage == 'de' ? 'active' : ''">
+          DE
+        </b-button>
+        <b-button 
+          v-on:click="handleLanguageSwitch('Englisch')"
+          :class="currentLanguage == 'en' ? 'active' : ''">
+          EN
+        </b-button>
+      </b-button-group>
     </div>
   </header>
 </template>
@@ -23,13 +39,18 @@ export default {
   data() {
     return {
       darkmode: false,
-      gitHubHovered: false
+      gitHubHovered: false,
+      currentLanguage: 'Deutsch'
     }
   },
   methods: {
     switchDarkMode() {
       this.darkmode = !this.darkmode
       this.$emit('switchDarkMode', this.darkmode)
+    },
+    handleLanguageSwitch(lang) {
+      this.currentLanguage = lang
+      this.$emit('handleLanguageSwitch', lang)
     },
     print() {
       window.print()

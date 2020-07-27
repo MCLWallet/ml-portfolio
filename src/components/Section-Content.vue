@@ -1,5 +1,5 @@
 <template>
-  <b-row align-v="center section-content" :style="animationDelay">
+  <b-row class="section-content" align-v="center" :style="animationDelay">
     <b-col cols="12">
       <b-icon icon="dot" style="width: 32px; height: 32px;"></b-icon>
       <h2 v-if="!isProject">
@@ -45,7 +45,10 @@ export default {
     details: String,
     anfang: String,
     ende: String,
-    delay: Number,
+    delay: {
+      type: Number,
+      default: 0
+    },
     isProject: {
       type: Boolean,
       default: false

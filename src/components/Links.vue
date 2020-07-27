@@ -46,7 +46,10 @@ export default {
     }
   },
   props: {
-    darkmode: Boolean
+    darkmode: {
+      type: Boolean,
+      default: false
+    }
   },
   methods: {
     switchDarkMode() {

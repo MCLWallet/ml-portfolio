@@ -1,7 +1,6 @@
 <template>
   <div class="layout">
-    <Header @switchDarkMode="switchDarkMode($event)"/>
-    <slot :darkmode="darkmode"/>
+    <slot/>
   </div>
 </template>
 
@@ -15,31 +14,6 @@ query {
 }
 </static-query>
 
-<script>
-import Header from '~/components/Header.vue'
-
-export default {
-  components: {
-    Header
-  },
-  data() {
-    return {
-      darkmode: false,
-    }
-  },
-  methods: {
-    switchDarkMode() {
-      if (!this.darkmode) {
-        document.body.classList.add("dark-mode")
-      }
-      else {
-        document.body.classList.remove("dark-mode")
-      }
-      this.darkmode = !this.darkmode
-    }
-  },
-}
-</script>
 
 <style>
 body {
