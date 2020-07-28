@@ -8,6 +8,8 @@
     </div>
     <div class="header-child right-side">
       <!-- Language Switch -->
+      <!-- TODO: English as default language -->
+      <!-- TODO: Check geolocation for default language: https://rapidapi.com/blog/ip-geolocation-api/ -->
       <b-button-group class="mr-3 language-switcher">
         <b-button 
           v-on:click="handleLanguageSwitch('Deutsch')"
