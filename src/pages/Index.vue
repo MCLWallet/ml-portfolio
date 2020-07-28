@@ -18,8 +18,11 @@
     <b-container class="my-5">
       <!-- Projekterfahrung -->
       <div class="mb-4">
-        <SectionHeading title="Projekterfahrung" icon="folder"/>
-        <SectionContent v-for="project in sortArr($static.projectsGerman.edges)" 
+        <SectionHeading
+          :title="currentLanguage == 'Deutsch' ? 'Projekterfahrung' : 'Project Experience'"
+          icon="folder"/>
+        <div v-if="currentLanguage == 'Deutsch'">
+          <SectionContent v-for="project in sortArr($static.projectsGerman.edges)" 
                         :key="project.node.id"
                         :title="project.node.titel"
                         :firm="project.node.firma"
@@ -27,12 +30,30 @@
                         :details="project.node.details"
                         :anfang="project.node.anfang"
                         :ende="project.node.ende"
+                        :currentLanguage="currentLanguage"
                         isProject/>
+        </div>
+        <div v-else>
+          <SectionContent v-for="project in sortArr($static.projectsEnglish.edges)" 
+                        :key="project.node.id"
+                        :title="project.node.titel"
+                        :firm="project.node.firma"
+                        :location="project.node.ort"
+                        :details="project.node.details"
+                        :anfang="project.node.anfang"
+                        :ende="project.node.ende"
+                        :currentLanguage="currentLanguage"
+                        isProject/>
+        </div>
       </div>
+
       <!-- Berufserfahrung -->
       <div class="mb-4">
-        <SectionHeading title="Unternehmen & Kollektive" icon="gear-fill"/>
-        <SectionContent v-for="job in sortArr($static.jobsGerman.edges)" 
+        <SectionHeading 
+          :title="currentLanguage == 'Deutsch' ? 'Unternehmen & Kollektive' : 'Companies & Collectives'" 
+          icon="gear-fill"/>
+        <div v-if="currentLanguage == 'Deutsch'">
+          <SectionContent v-for="job in sortArr($static.jobsGerman.edges)" 
                         :key="job.node.id"
                         :delay="0"
                         :title="job.node.titel"
@@ -40,12 +61,30 @@
                         :location="job.node.ort"
                         :details="job.node.details"
                         :anfang="job.node.anfang"
-                        :ende="job.node.ende"/>
+                        :ende="job.node.ende"
+                        :currentLanguage="currentLanguage"
+                        />
+        </div>
+        <div v-else>
+          <SectionContent v-for="job in sortArr($static.jobsEnglish.edges)" 
+                        :key="job.node.id"
+                        :delay="0"
+                        :title="job.node.titel"
+                        :firm="job.node.firma"
+                        :location="job.node.ort"
+                        :details="job.node.details"
+                        :anfang="job.node.anfang"
+                        :ende="job.node.ende"
+                        :currentLanguage="currentLanguage"
+                        />
+        </div>
       </div>
       
       <!-- Ausbildung -->
       <div class="mb-4">
-        <SectionHeading title="Ausbildung" icon="book"/>
+        <SectionHeading 
+          :title="currentLanguage == 'Deutsch' ? 'Ausbildung' : 'Education'" 
+          icon="book"/>
         <div v-if="currentLanguage == 'Deutsch'">
           <SectionContent v-for="education in $static.educationGerman.edges"
                         :key="education.node.id"
@@ -54,7 +93,9 @@
                         :location="education.node.ort"
                         :details="education.node.details"
                         :anfang="education.node.anfang"
-                        :ende="education.node.ende"/>
+                        :ende="education.node.ende"
+                        :currentLanguage="currentLanguage"
+                        />
         </div>
         <div v-else>
           <SectionContent v-for="education in $static.educationEnglish.edges"
@@ -64,20 +105,24 @@
                         :location="education.node.ort"
                         :details="education.node.details"
                         :anfang="education.node.anfang"
-                        :ende="education.node.ende"/>
+                        :currentLanguage="currentLanguage"
+                        :ende="education.node.ende"
+                        />
         </div>
-        
       </div>
-      
 
       <!-- Programmierkenntnisse -->
-      <SectionHeading title="Programmierkenntnisse" icon="code-slash"/>
+      <SectionHeading 
+        :title="currentLanguage == 'Deutsch' ? 'Programmierkenntnisse' : 'Programming Experience'" 
+        icon="code-slash"/>
       <SkillsContent :array="$static.skills.edges"/>
 
       <!-- Hobbies -->
-      <SectionHeading title="Hobbies & andere Leidenschaften" icon="controller"/>
-      <SkillsContent :array="$static.hobbies.edges"/>
-      <!-- TODO: Write english content -->
+      <SectionHeading 
+        :title="currentLanguage == 'Deutsch' ? 'Hobbies & andere Leidenschaften' : 'Hobbies & other passions'"
+        icon="controller"/>
+      <SkillsContent :array="currentLanguage == 'Deutsch' ? $static.hobbiesGerman.edges : $static.hobbiesEnglish.edges"/>
+      
       <!-- TODO: Refactoring -->
     </b-container>
   </Layout>
@@ -204,7 +249,15 @@ query {
       }
     }
   },
-  hobbies: allSkill(filter: {art: {eq: "Sonstiges"}}) {
+  hobbiesGerman: allSkill(filter: {art: {eq: "Sonstiges"}, sprache: {contains: "Deutsch"}}) {
+    edges {
+      node {
+        id
+        skill
+      }
+    }
+  }
+  hobbiesEnglish: allSkill(filter: {art: {eq: "Sonstiges"}, sprache: {contains: "Englisch"}}) {
     edges {
       node {
         id

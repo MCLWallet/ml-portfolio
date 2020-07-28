@@ -5,8 +5,7 @@ import DefaultLayout from '~/layouts/Default.vue'
 import { BootstrapVue,BootstrapVueIcons } from 'bootstrap-vue'
 
 import '~/assets/quenda-medium.css'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '~/assets/global.scss'
 import '~/assets/fonts.scss'
 import '~/assets/animations.scss'
 

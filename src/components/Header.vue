@@ -7,24 +7,28 @@
       </button>
     </div>
     <div class="header-child right-side">
-      <!-- Print Button -->
-      <button class="dark-mode-button" v-on:click="print()"  title="Drucken">
-        <PrintIcon class="print-icon" style="width: 40px; height: 40px;"/>
-      </button>
       <!-- Language Switch -->
-      <!-- TODO: Style Language Switch -->
-      <b-button-group>
+      <b-button-group class="mr-3 language-switcher">
         <b-button 
           v-on:click="handleLanguageSwitch('Deutsch')"
-          :class="currentLanguage == 'de' ? 'active' : ''">
+          :variant="darkmode ? 'outline-light' : 'outline-dark'"
+          :class="currentLanguage == 'Deutsch' ? 'active' : ''"
+          :title="currentLanguage == 'Deutsch' ? 'German' : 'Deutsch'">
           DE
         </b-button>
         <b-button 
           v-on:click="handleLanguageSwitch('Englisch')"
-          :class="currentLanguage == 'en' ? 'active' : ''">
+          :variant="darkmode ? 'outline-light' : 'outline-dark'"
+          :class="currentLanguage == 'Englisch' ? 'active' : ''"
+          :title="currentLanguage == 'Deutsch' ? 'English' : 'Englisch'">
           EN
         </b-button>
       </b-button-group>
+      <!-- Print Button -->
+      <button class="dark-mode-button" v-on:click="print()"  :title="currentLanguage == 'Deutsch' ? 'Drucken' : 'Print'">
+        <PrintIcon class="print-icon" style="width: 40px; height: 40px;"/>
+      </button>
+      
     </div>
   </header>
 </template>
@@ -82,7 +86,8 @@ export default {
     transition: 0.8s;
     transition-timing-function: ease-out;
   }
-  .dark-mode-button:hover {
+  .dark-mode-button:hover,
+  .dark-mode-button:focus {
     transform: scale(1.3);
   }
   .dark-mode-button:focus {
@@ -92,7 +97,8 @@ export default {
     fill: #fffffe;
   }
   @media print {
-    .dark-mode-button svg {
+    .dark-mode-button svg,
+    .language-switcher {
       opacity: 0;
     }
   }

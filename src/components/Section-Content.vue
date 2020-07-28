@@ -3,7 +3,7 @@
     <b-col cols="12">
       <b-icon icon="dot" style="width: 32px; height: 32px;"></b-icon>
       <h2 v-if="!isProject">
-        {{ anfang ? convertedAnfang + ' - ' + (ende ? convertedEnde : 'Heute') : convertedEnde }}
+        {{ anfang ? convertedAnfang + ' - ' + (ende ? convertedEnde : getToday()) : convertedEnde }}
       </h2>
       <h2 v-else>
         {{ anfang ? convertedAnfangYear + ' - ' + convertedEndeYear : convertedEndeYear }}
@@ -16,11 +16,11 @@
           {{ firm + ', ' + location }} 
         </h4>
         <h4 v-else> 
-          <strong>Kunde: </strong>
+          <strong>{{ currentLanguage == 'Deutsch' ? 'Kunde: ' : 'Client: ' }}</strong>
           {{ firm }} 
         </h4>
         
-        <vue-markdown v-if="details" class="details" :anchorAttributes="{target: '_blank'}">
+        <vue-markdown v-if="details" class="details mt-2" :anchorAttributes="{target: '_blank'}">
           {{details}}
         </vue-markdown>
       </div>
@@ -52,22 +52,27 @@ export default {
     isProject: {
       type: Boolean,
       default: false
-    }
+    },
+    currentLanguage: String
   },
   computed: {
     convertedAnfang() {
+      this.checkCurrentLanguage()
       let newAnfang = moment(this.anfang, "YYYY-MM-DD").format("MMMM YYYY")
       return newAnfang
     },
     convertedEnde() {
+      this.checkCurrentLanguage()
       let newEnde = moment(this.ende, "YYYY-MM-DD").format("MMMM YYYY")
       return newEnde
     },
     convertedAnfangYear() {
+      this.checkCurrentLanguage()
       let newYear = moment(this.anfang, "YYYY-MM-DD").format("YYYY")
       return newYear
     },
     convertedEndeYear() {
+      this.checkCurrentLanguage()
       let newYear = moment(this.ende, "YYYY-MM-DD").format("YYYY")
       return newYear
     },
@@ -75,10 +80,24 @@ export default {
       return 'animation-delay: ' + this.delay + 's;'
     }
   },
-  beforeCreate() {
-    moment.locale('de')
+  methods: {
+    checkCurrentLanguage() {
+      if (this.currentLanguage == 'Deutsch') {
+        moment.locale('de')
+      }
+      else {
+        moment.locale('en')
+      }
+    },
+    getToday() {
+      if (this.currentLanguage == 'Deutsch') {
+        return 'Heute'
+      }
+      else {
+        return 'Today'
+      }
+    }
   }
-
 }
 </script>
 
@@ -89,12 +108,6 @@ export default {
     margin-left: 15px;
     padding-left: 2.1em;
     transition: .2s ease-in;
-  }
-  .section-content {
-    opacity: 0;
-    animation-name: fadeIn;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
   }
   .section-content a{
     text-decoration: underline;
