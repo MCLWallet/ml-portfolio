@@ -125,6 +125,9 @@
       
       <!-- TODO: Refactoring -->
     </b-container>
+
+    <Footer :currentLanguage="currentLanguage"/>
+
   </Layout>
 </template>
 
@@ -271,6 +274,7 @@ query {
 
 <script>
 import Header from '~/components/Header.vue'
+import Footer from '~/components/Footer.vue'
 
 import SectionHeading from '~/components/Section-Heading.vue'
 import SectionContent from '~/components/Section-Content.vue'
@@ -285,7 +289,8 @@ export default {
     SectionContent,
     SkillsContent,
     Logo,
-    Links
+    Links,
+    Footer
   },
   data() {
     return {

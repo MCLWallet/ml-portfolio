@@ -16,14 +16,14 @@
           :variant="darkmode ? 'outline-light' : 'outline-dark'"
           :class="currentLanguage == 'Deutsch' ? 'active' : ''"
           :title="currentLanguage == 'Deutsch' ? 'German' : 'Deutsch'">
-          DE
+          De
         </b-button>
         <b-button 
           v-on:click="handleLanguageSwitch('Englisch')"
           :variant="darkmode ? 'outline-light' : 'outline-dark'"
           :class="currentLanguage == 'Englisch' ? 'active' : ''"
           :title="currentLanguage == 'Deutsch' ? 'English' : 'Englisch'">
-          EN
+          En
         </b-button>
       </b-button-group>
       <!-- Print Button -->
@@ -97,6 +97,11 @@ export default {
   }
   .dark-mode .print-icon path {
     fill: #fffffe;
+  }
+  .language-switcher button{
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
   }
   @media print {
     .dark-mode-button svg,
