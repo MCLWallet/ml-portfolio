@@ -5,47 +5,13 @@
     <b-container>
       <b-row>
         <b-col cols="12">
-
           <Logo/>
           <Links :darkmode="darkmode"/>
         </b-col>
-
       </b-row>
-
     </b-container>
-  
-
+    
     <b-container class="my-5">
-      <!-- Projekterfahrung -->
-      <div class="mb-4">
-        <SectionHeading
-          :title="currentLanguage == 'Deutsch' ? 'Projekterfahrung' : 'Project Experience'"
-          icon="folder"/>
-        <div v-if="currentLanguage == 'Deutsch'">
-          <SectionContent v-for="project in sortArr($static.projectsGerman.edges)" 
-                        :key="project.node.id"
-                        :title="project.node.titel"
-                        :firm="project.node.firma"
-                        :location="project.node.ort"
-                        :details="project.node.details"
-                        :anfang="project.node.anfang"
-                        :ende="project.node.ende"
-                        :currentLanguage="currentLanguage"
-                        isProject/>
-        </div>
-        <div v-else>
-          <SectionContent v-for="project in sortArr($static.projectsEnglish.edges)" 
-                        :key="project.node.id"
-                        :title="project.node.titel"
-                        :firm="project.node.firma"
-                        :location="project.node.ort"
-                        :details="project.node.details"
-                        :anfang="project.node.anfang"
-                        :ende="project.node.ende"
-                        :currentLanguage="currentLanguage"
-                        isProject/>
-        </div>
-      </div>
 
       <!-- Berufserfahrung -->
       <div class="mb-4">
@@ -79,7 +45,38 @@
                         />
         </div>
       </div>
-      
+
+      <!-- Projekterfahrung -->
+      <div class="mb-4">
+        <SectionHeading
+          :title="currentLanguage == 'Deutsch' ? 'Projekterfahrung' : 'Project Experience'"
+          icon="folder"/>
+        <div v-if="currentLanguage == 'Deutsch'">
+          <SectionContent v-for="project in sortArr($static.projectsGerman.edges)" 
+                        :key="project.node.id"
+                        :title="project.node.titel"
+                        :firm="project.node.firma"
+                        :location="project.node.ort"
+                        :details="project.node.details"
+                        :anfang="project.node.anfang"
+                        :ende="project.node.ende"
+                        :currentLanguage="currentLanguage"
+                        isProject/>
+        </div>
+        <div v-else>
+          <SectionContent v-for="project in sortArr($static.projectsEnglish.edges)" 
+                        :key="project.node.id"
+                        :title="project.node.titel"
+                        :firm="project.node.firma"
+                        :location="project.node.ort"
+                        :details="project.node.details"
+                        :anfang="project.node.anfang"
+                        :ende="project.node.ende"
+                        :currentLanguage="currentLanguage"
+                        isProject/>
+        </div>
+      </div>
+
       <!-- Ausbildung -->
       <div class="mb-4">
         <SectionHeading 
