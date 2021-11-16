@@ -1,7 +1,8 @@
 <template>
   <Layout>
     <Header @switchDarkMode="switchDarkMode($event)"
-            @handleLanguageSwitch="handleLanguageSwitch($event)"/>
+            @handleLanguageSwitch="handleLanguageSwitch($event)"
+            :darkmode="darkmode"/>
     <b-container>
       <b-row>
         <b-col cols="12">
@@ -314,6 +315,10 @@ export default {
     handleLanguageSwitch(lang) {
       this.currentLanguage = lang
     },
+  },
+  created() {
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+    this.switchDarkMode(prefersDarkScheme.matches)
   }
 }
 </script>

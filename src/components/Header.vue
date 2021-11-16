@@ -44,9 +44,14 @@ export default {
   },
   data() {
     return {
-      darkmode: false,
       gitHubHovered: false,
       currentLanguage: 'Deutsch'
+    }
+  },
+  props: {
+    darkmode: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -62,6 +67,10 @@ export default {
       window.print()
     }
   },
+  // created() {
+  //   const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  //   this.switchDarkMode(prefersDarkScheme.matches)
+  // }
 }
 </script>
 
