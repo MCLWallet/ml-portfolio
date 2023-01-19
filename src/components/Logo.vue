@@ -4,7 +4,7 @@
       {{ $static.metadata.siteName }}
     </div>
     <div class="logo-tagline">
-      Full-Stack Developer
+      Web-/App-Developer
     </div>
   </div>
 </template>

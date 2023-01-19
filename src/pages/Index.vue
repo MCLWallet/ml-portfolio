@@ -292,7 +292,7 @@ export default {
   },
   data() {
     return {
-      darkmode: false,
+      darkmode: true,
       currentLanguage: 'Deutsch'
     }
   },
