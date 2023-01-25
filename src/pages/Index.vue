@@ -292,7 +292,7 @@ export default {
   },
   data() {
     return {
-      darkmode: true,
+      darkmode: false,
       currentLanguage: 'Deutsch'
     }
   },
@@ -304,7 +304,7 @@ export default {
       return arr.slice().sort((a, b) => (a.node.order < b.node.order) ? 1 : -1)
     },
     switchDarkMode(darkmode) {
-      if (!this.darkmode) {
+      if (darkmode) {
         document.body.classList.add("dark-mode")
       }
       else {
@@ -316,9 +316,18 @@ export default {
       this.currentLanguage = lang
     },
   },
-  created() {
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+  mounted() {
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)")
     this.switchDarkMode(prefersDarkScheme.matches)
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+      if (e.matches) {
+        document.querySelector("body").classList.add("dark-mode")
+      }
+      else {
+        document.querySelector("body").classList.remove("dark-mode")
+      }
+      // TODO: fix dark mode switcher when automatically set to dark mode
+    })
   }
 }
 </script>

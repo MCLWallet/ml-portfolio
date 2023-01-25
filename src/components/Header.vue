@@ -66,11 +66,7 @@ export default {
     print() {
       window.print()
     }
-  },
-  // created() {
-  //   const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-  //   this.switchDarkMode(prefersDarkScheme.matches)
-  // }
+  }
 }
 </script>
 
