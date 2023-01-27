@@ -82,9 +82,9 @@
       <div class="mb-4">
         <SectionHeading 
           :title="currentLanguage == 'Deutsch' ? 'Ausbildung' : 'Education'" 
-          icon="book"/>
+          icon="journals"/>
         <div v-if="currentLanguage == 'Deutsch'">
-          <SectionContent v-for="education in $static.educationGerman.edges"
+          <SectionContent v-for="education in sortArr($static.educationGerman.edges)"
                         :key="education.node.id"
                         :title="education.node.titel"
                         :firm="education.node.firma"
@@ -96,7 +96,7 @@
                         />
         </div>
         <div v-else>
-          <SectionContent v-for="education in $static.educationEnglish.edges"
+          <SectionContent v-for="education in sortArr($static.educationEnglish.edges)"
                         :key="education.node.id"
                         :title="education.node.titel"
                         :firm="education.node.firma"
@@ -113,12 +113,48 @@
       <SectionHeading 
         :title="currentLanguage == 'Deutsch' ? 'Programmierkenntnisse' : 'Programming Experience'" 
         icon="code-slash"/>
-      <SkillsContent :array="$static.skills.edges"/>
+      <SkillsContent :array="$static.programmingLanguages.edges"/>
+
+      <!-- Frameworks & Libraries -->
+      <SectionHeading 
+        title="Frameworks & Libraries" 
+        icon="book"/>
+      <SkillsContent :array="$static.frameworksLibraries.edges"/>
+
+      <!-- CMS -->
+      <SectionHeading 
+        title="CMS" 
+        icon="newspaper"/>
+      <SkillsContent :array="$static.cms.edges"/>
+
+      <!-- Cloud Services -->
+      <SectionHeading 
+        title="Cloud Services" 
+        icon="cloud"/>
+      <SkillsContent :array="$static.cloudServices.edges"/>
+
+      <!-- Software -->
+      <SectionHeading 
+        title="Software" 
+        icon="laptop"/>
+      <SkillsContent :array="$static.software.edges"/>
+
+      <!-- Design -->
+      <SectionHeading 
+        title="Design" 
+        icon="flower1"/>
+      <SkillsContent :array="$static.design.edges"/>
+
+      <!-- Videospiele -->
+      <SectionHeading 
+        :title="currentLanguage == 'Deutsch' ? 'Videospiele' : 'Videogames'"  
+        icon="controller"/>
+      <SkillsContent :array="$static.videoGames.edges"/>
 
       <!-- Hobbies -->
       <SectionHeading 
         :title="currentLanguage == 'Deutsch' ? 'Hobbies & andere Leidenschaften' : 'Hobbies & other passions'"
-        icon="controller"/>
+        icon="heart"/>
       <SkillsContent :array="currentLanguage == 'Deutsch' ? $static.hobbiesGerman.edges : $static.hobbiesEnglish.edges"/>
       
       <!-- TODO: Refactoring -->
@@ -242,7 +278,55 @@ query {
       }
     }
   },
-  skills: allSkill(filter: {art: {ne: "Sonstiges"}}) {
+  programmingLanguages: allSkill(filter: {art: {eq: "Programmiersprache"}}) {
+    edges {
+      node {
+        id
+        skill
+      }
+    }
+  },
+  frameworksLibraries: allSkill(filter: {art: {eq: "Frameworks & Libraries"}}) {
+    edges {
+      node {
+        id
+        skill
+      }
+    }
+  },
+  cms: allSkill(filter: {art: {eq: "CMS"}}) {
+    edges {
+      node {
+        id
+        skill
+      }
+    }
+  },
+  cloudServices: allSkill(filter: {art: {eq: "Cloud Dienst"}}) {
+    edges {
+      node {
+        id
+        skill
+      }
+    }
+  },
+  software: allSkill(filter: {art: {eq: "Software"}}) {
+    edges {
+      node {
+        id
+        skill
+      }
+    }
+  },
+  design: allSkill(filter: {art: {eq: "Design"}}) {
+    edges {
+      node {
+        id
+        skill
+      }
+    }
+  },
+  videoGames: allSkill(filter: {art: {eq: "Videospiele"}}) {
     edges {
       node {
         id
