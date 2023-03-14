@@ -144,13 +144,7 @@
         title="Design" 
         icon="flower1"/>
       <SkillsContent :array="$static.design.edges"/>
-
-      <!-- Videospiele -->
-      <SectionHeading 
-        :title="currentLanguage == 'Deutsch' ? 'Videospiele' : 'Videogames'"  
-        icon="controller"/>
-      <SkillsContent :array="$static.videoGames.edges"/>
-
+      
       <!-- Hobbies -->
       <SectionHeading 
         :title="currentLanguage == 'Deutsch' ? 'Hobbies & andere Leidenschaften' : 'Hobbies & other passions'"

@@ -1,5 +1,11 @@
 <template>
   <div class="logo">
+    <b-img 
+      v-bind="mainProps"
+      rounded="circle" 
+      alt="Circle image"
+      src="https://media.creativemornings.com/uploads/user/avatar/508113/LM104255-768x1149.jpg">
+    </b-img>
     <div class="logo-name mb-1">
       {{ $static.metadata.siteName }}
     </div>
@@ -19,7 +25,11 @@ query {
 
 <script>
 export default {
-
+  data() {
+    return {
+      mainProps: { width: 180, height: 180, class: 'mb-4'}
+    }
+  }
 }
 </script>
 
